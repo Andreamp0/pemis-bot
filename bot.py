@@ -3,17 +3,15 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 import os
-from keep_alive import keep_alive
 from collections import Counter
 load_dotenv()
 token = os.getenv('DISCORD_TOKEN')
-keep_alive()
 intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
 pemis_count = {}
 last = 0
-pemis_id = 1394948705647464491
+pemis_id = 1394948705647464491 #this is my channel that I have used for testing, I will change it to the chain channel once created
 explain_message = """Pemis is a meme in the Lofers Community that originated from [here](https://discord.com/channels/1378361814672216144/1383767207049171005/1390991554956492800)."""
 commands_list = """- `.pemiscount <user (optional)>`: displays the number of times you (or the specified user) have said "pemis", along with their rank on the server.
 - `.leaderboard <num (optional)>`: Shows the server leaderboard of the top users based on "pemis" count. If no number is provided, it defaults to showing the top 10."""
@@ -103,7 +101,7 @@ async def help(ctx):
 
 @bot.command()
 async def reevaluate(ctx):
-    if ctx.author.id == 732244359193559091:
+    if ctx.author.id == 732244359193559091: #my id
         global pemis_count
         pemis_count = {}
         channel = bot.get_channel(pemis_id)
